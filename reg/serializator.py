@@ -51,3 +51,13 @@ class EmailVerificationSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=30)
     password = serializers.CharField()
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    photo = serializers.CharField(max_length=255)
+    birthday = serializers.DateField()
+    email = serializers.EmailField()
+    phone = serializers.CharField(max_length=15)
+    class Meta:
+        model = User
+        fields = "username birthday email phone photo".split()   

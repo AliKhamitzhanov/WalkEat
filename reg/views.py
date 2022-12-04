@@ -15,6 +15,7 @@ from .serializator import (
     LoginSerializer,
     EmailVerificationSerializer,
     RegisterSerializer,
+    ProfileSerializer
 )
 from django.contrib.sites.shortcuts import get_current_site
 from rest_framework.decorators import APIView
@@ -92,3 +93,7 @@ class LoginAPIView(APIView):
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 # Create your views here.
+class ProfileViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = User.objects.all()
+    serializer_class = ProfileSerializer

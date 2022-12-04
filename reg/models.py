@@ -41,7 +41,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     phone = PhoneNumberField(unique=True)
-
+    photo = models.ImageField(null=True)
+    birthday = models.DateField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     USERNAME_FIELD = "phone"
@@ -51,4 +52,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-# Create your models here.
+
