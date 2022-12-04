@@ -2,7 +2,7 @@ from django.db import models
 
 WEEK_LIST = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 WEEK_CHOICES = ((day, day) for day in WEEK_LIST)
-CATEGORY_LIST = ["breakfast", "lunch", "snack" "dinner"]
+CATEGORY_LIST = ["breakfast", "lunch", "snack", "dinner"]
 CATEGORY_CHOICES = ((category, category) for category in CATEGORY_LIST)
 
 class Fit(models.Model):
@@ -23,11 +23,9 @@ class Food(models.Model):
     carbohydrates = models.PositiveSmallIntegerField()
     fats = models.FloatField()
     ingredients = models.TextField()
-    category = models.CharField(max_length=255, choices=CATEGORY_CHOICES)
-    fit = models.ForeignKey(Fit, on_delete=models.PROTECT)
-    day = models.CharField(max_length=255, choices=WEEK_CHOICES)
+    category = models.CharField(max_length=255, choices=CATEGORY_CHOICES, null=True)
+    fit = models.ForeignKey(Fit, on_delete=models.PROTECT, null=True, related_name="food")
+    day = models.CharField(max_length=255, choices=WEEK_CHOICES, null=True)
 
     def __str__(self) -> str:
         return self.title
-
-
