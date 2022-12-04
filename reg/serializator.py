@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from reg.models import User
-
+from phonenumber_field.serializerfields import PhoneNumberField
 
 class UserSerializer(serializers.Serializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)
@@ -57,7 +57,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     photo = serializers.ImageField()
     birthday = serializers.DateField()
     email = serializers.EmailField()
-    phone = serializers.CharField(max_length=15)
+    phone = PhoneNumberField()
     class Meta:
         model = User
         fields = "username birthday email phone photo".split()   
