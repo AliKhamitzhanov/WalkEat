@@ -54,7 +54,7 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    photo = serializers.CharField(max_length=255)
+    photo = serializers.ImageField()
     birthday = serializers.DateField()
     email = serializers.EmailField()
     phone = serializers.CharField(max_length=15)
