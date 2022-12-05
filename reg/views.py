@@ -98,12 +98,14 @@ class ProfileViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = ProfileSerializer
+    authentication_classes = [JWTAuthentication]
 
 
 class ChangePasswordView(UpdateAPIView):
     serializer_class = ChangePasswordSerializer
     model = User
     permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
 
     def get_object(self):
         return self.request.user
