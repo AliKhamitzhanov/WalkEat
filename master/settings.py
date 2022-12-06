@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'drf_yasg',
-    'reg'
+    'reg',
+    "django_rest_passwordreset",
+    "passwordreset"
 
 ]
 
@@ -80,6 +82,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'master.wsgi.application'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Database
