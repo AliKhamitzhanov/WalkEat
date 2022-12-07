@@ -12,4 +12,4 @@ class Card(models.Model):
     cc_code = SecurityCodeField('security_code')
 
     def __str__(self):
-        return f'{self.cc_number}{self.user} card'  
+        return self.cc_number

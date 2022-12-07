@@ -60,7 +60,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     phone = PhoneNumberField()
     class Meta:
         model = User
-        fields = "username birthday email phone photo".split()   
+        fields = "username birthday email phone photo user_card".split()   
 
 
 class ChangePasswordSerializer(serializers.Serializer):

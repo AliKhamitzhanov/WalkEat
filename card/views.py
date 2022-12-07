@@ -3,10 +3,10 @@ from rest_framework.viewsets import ModelViewSet
 from .serializers import CardSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import  IsAuthenticated
-from .models import Payment
+from .models import Card
 
 class CardView(ModelViewSet):
-    queryset = Payment.objects.all()
+    queryset = Card.objects.all()
     serializer_class = CardSerializer
     # permission_classes = [IsAuthenticated]
     # authentication_classes = [JWTAuthentication]

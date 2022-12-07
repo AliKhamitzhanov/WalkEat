@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import GenericAPIView, UpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import User
-from .serializator import (
+from .serializers import (
     LoginSerializer,
     EmailVerificationSerializer,
     RegisterSerializer,

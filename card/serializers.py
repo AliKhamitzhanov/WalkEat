@@ -4,4 +4,4 @@ from .models import Card
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
-        fields = '__all__'    
+        fields = 'cc_expiry cc_number cc_code user_card'.split()

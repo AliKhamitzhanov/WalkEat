@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+
 # router = DefaultRouter()
 # router.register(r'profile', ProfileViewSet, "profile_api")
 
@@ -19,6 +20,7 @@ urlpatterns = [
 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('password/reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     'reg',
     "django_rest_passwordreset",
-    "passwordreset",
     'card'
 
 ]
