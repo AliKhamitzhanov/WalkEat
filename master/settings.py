@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     'reg',
     "django_rest_passwordreset",
-    "passwordreset"
+    "passwordreset",
+    'card'
 
 ]
 
@@ -129,7 +130,7 @@ SIMPLE_JWT = {
     "JWK_URL": None,
     "LEEWAY": 0,
     "AUTH_HEADER_TYPES": ("Bearer",),
-    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "AUTH_HEADER_NAME": "HTTP_A UTHORIZATION",
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
     "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",

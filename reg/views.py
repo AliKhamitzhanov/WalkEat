@@ -1,7 +1,4 @@
-from django.shortcuts import render
-from django.shortcuts import render
 from rest_framework import status
-from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 
@@ -11,23 +8,16 @@ from rest_framework.generics import GenericAPIView, UpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import User
 from .serializator import (
-    UserSerializer,
     LoginSerializer,
     EmailVerificationSerializer,
     RegisterSerializer,
     ProfileSerializer,
     ChangePasswordSerializer
 )
-from django.contrib.sites.shortcuts import get_current_site
 from rest_framework.decorators import APIView
-from django.urls import reverse
 from drf_yasg import openapi
-import jwt
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework import generics
-from rest_framework.mixins import ListModelMixin
-from django.shortcuts import get_object_or_404
 
 
 
