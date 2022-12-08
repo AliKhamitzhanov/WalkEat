@@ -1,5 +1,5 @@
 from django.urls import path, include
-from reg.views import RegisterView, LoginAPIView, ProfileViewSet, ChangePasswordView
+from reg.views import RegisterView, LoginAPIView, ProfileViewSet, ChangePasswordView, AddressView
 from rest_framework.routers import DefaultRouter
 from django.conf.urls.static import static
 from django.conf import settings
@@ -9,8 +9,8 @@ from rest_framework_simplejwt.views import (
 )
 
 
-# router = DefaultRouter()
-# router.register(r'profile', ProfileViewSet, "profile_api")
+router = DefaultRouter()
+router.register(r'address', AddressView, "address_api")
 
 urlpatterns = [
     path("login/", LoginAPIView.as_view(), name="login"),
@@ -21,6 +21,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('password/reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('', include(router.urls))
 
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   

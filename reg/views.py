@@ -6,13 +6,14 @@ from django.contrib.auth import authenticate
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import GenericAPIView, UpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .models import User
+from .models import User, Addresses
 from .serializers import (
     LoginSerializer,
     EmailVerificationSerializer,
     RegisterSerializer,
     ProfileSerializer,
-    ChangePasswordSerializer
+    ChangePasswordSerializer,
+    AddressSerializer
 )
 from rest_framework.decorators import APIView
 from drf_yasg import openapi
@@ -85,10 +86,10 @@ class LoginAPIView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 # Create your views here.
 class ProfileViewSet(ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = ProfileSerializer
-    authentication_classes = [JWTAuthentication]
+    # authentication_classes = [JWTAuthentication]
 
 
 class ChangePasswordView(UpdateAPIView):
@@ -120,3 +121,9 @@ class ChangePasswordView(UpdateAPIView):
 
             return Response(response)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class AddressView(ModelViewSet):
+    queryset = Addresses.objects.all()
+    serializer_class = AddressSerializer
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]

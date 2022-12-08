@@ -43,6 +43,13 @@ class MyUserManager(BaseUserManager):
         )
 
 
+class Addresses(models.Model):
+    street = models.CharField(max_length=100)
+    home = models.PositiveIntegerField()
+    flat = models.PositiveIntegerField()
+    floor = models.PositiveIntegerField()
+    address = models.CharField(max_length=100)
+
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True, unique=True)
     username = models.CharField(max_length=50, unique=True)
@@ -50,6 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = PhoneNumberField(unique=True)
     photo = models.ImageField(default='media/avatar.jpeg', blank=True)
     payment = models.ForeignKey(Card, on_delete=models.CASCADE, null=True, related_name='user_card')
+    address = models.OneToOneField(Addresses, on_delete=models.CASCADE, null=True)
     birthday = models.DateField(null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

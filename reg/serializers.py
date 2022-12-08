@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from reg.models import User
+from reg.models import User, Addresses
 from phonenumber_field.serializerfields import PhoneNumberField
 
 class UserSerializer(serializers.Serializer):
@@ -60,7 +60,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     phone = PhoneNumberField()
     class Meta:
         model = User
-        fields = "username birthday email phone photo user_card".split()   
+        fields = "username birthday email phone photo user_card address".split()   
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Addresses
+        fields = '__all__'
 
 
 class ChangePasswordSerializer(serializers.Serializer):
