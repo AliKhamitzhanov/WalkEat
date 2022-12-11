@@ -2,6 +2,7 @@ from rest_framework import serializers
 from reg.models import User, Addresses
 from phonenumber_field.serializerfields import PhoneNumberField
 
+
 class UserSerializer(serializers.Serializer):
     id = serializers.PrimaryKeyRelatedField(read_only=True)
     username = serializers.CharField(max_length=30, min_length=8)
@@ -58,9 +59,11 @@ class ProfileSerializer(serializers.ModelSerializer):
     birthday = serializers.DateField()
     email = serializers.EmailField()
     phone = PhoneNumberField()
+
     class Meta:
         model = User
-        fields = "username birthday email phone photo user_card address".split()   
+        fields = "username birthday email phone photo user_card address".split()
+
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
@@ -72,4 +75,3 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = User
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
-

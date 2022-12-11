@@ -5,5 +5,3 @@ admin.site.register(Food)
 admin.site.register(Fit)
 admin.site.register(Set)
 admin.site.register(Category)
-
-

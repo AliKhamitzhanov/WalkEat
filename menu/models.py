@@ -3,6 +3,8 @@ from django.db import models
 WEEK_LIST = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 WEEK_CHOICES = ((day, day) for day in WEEK_LIST)
 CATEGORY_LIST = ["breakfast", "lunch", "snack", "dinner"]
+
+
 # CATEGORY_CHOICES = ((category, category) for category in CATEGORY_LIST)
 
 

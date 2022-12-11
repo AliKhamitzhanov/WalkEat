@@ -2,10 +2,11 @@ from django.db import models
 from creditcards.models import CardExpiryField, CardNumberField, SecurityCodeField
 from master import settings
 
+
 class Card(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_card"
-    , null=True)
+        , null=True)
 
     cc_expiry = CardExpiryField('expiration_date')
     cc_number = CardNumberField('card_number')

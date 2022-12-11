@@ -14,6 +14,7 @@ class FitListView(ListCreateAPIView):
     queryset = Fit.objects.all()
     serializer_class = FitListSerializer
 
+
 class FitDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Fit.objects.all()
     serializer_class = FitDetailSerializer
