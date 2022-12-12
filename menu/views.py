@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Fit, Food, Set, Category
+from .models import Fit, Food, Category
 from .serializers import CategorySerializer, FitListSerializer, FitDetailSerializer
 from rest_framework.viewsets import ModelViewSet
 

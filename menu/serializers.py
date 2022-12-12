@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Fit, Food, Category, Set
+from .models import Fit, Food, Category
 
 
 class FitListSerializer(serializers.ModelSerializer):
@@ -11,27 +11,18 @@ class FitListSerializer(serializers.ModelSerializer):
 class FoodListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = "title image calories category".split()
+        fields = "title image calories carbohydrates squirrels fats ingredients".split()
 
 
 class CategorySerializer(serializers.ModelSerializer):
     food = FoodListSerializer(many=True)
-
     class Meta:
         model = Category
         fields = "category_name food".split()
 
 
-class SetSerializer(serializers.ModelSerializer):
-    foods = FoodListSerializer(many=True)
-
-    class Meta:
-        model = Set
-        fields = "day foods fit".split()
-
-
 class FitDetailSerializer(serializers.ModelSerializer):
-    # set = SetSerializer(many=True)
+    food = FoodListSerializer(many=True)
     class Meta:
         model = Fit
-        fields = "__all__"
+        fields = "image title description kcal price food".split()

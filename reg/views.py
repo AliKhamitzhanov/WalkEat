@@ -84,10 +84,10 @@ class LoginAPIView(APIView):
 
 # Create your views here.
 class ProfileViewSet(ModelViewSet):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = ProfileSerializer
-    # authentication_classes = [JWTAuthentication]
+    authentication_classes = [JWTAuthentication]
 
 
 class ChangePasswordView(UpdateAPIView):
@@ -122,5 +122,5 @@ class ChangePasswordView(UpdateAPIView):
 class AddressView(ModelViewSet):
     queryset = Addresses.objects.all()
     serializer_class = AddressSerializer
-    # permission_classes = [IsAuthenticated]
-    # authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
