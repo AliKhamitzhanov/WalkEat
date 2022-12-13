@@ -1,6 +1,7 @@
 from django.db import models
 from cart.models import Cart
 
+
 class MyOrders(models.Model):
     date = models.DateField()
     image = models.ImageField()
@@ -9,6 +10,6 @@ class MyOrders(models.Model):
     price = models.IntegerField()
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
 
+
 class CashBack(models.Model):
     cashback = models.TextField(max_length=255)
-

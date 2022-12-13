@@ -1,8 +1,9 @@
 from django.db import models
 from menu.models import Food
 from django.core.validators import MaxLengthValidator, MinLengthValidator
-# Create your models here.
 
+
+# Create your models here.
 
 
 class Cart(models.Model):
@@ -13,6 +14,7 @@ class Cart(models.Model):
     price = models.PositiveIntegerField()
     allergy = models.TextField(max_length=255)
     cutlery = models.BooleanField(default=False)
+
 
 class Adresses(models.Model):
     street = models.CharField(max_length=155)

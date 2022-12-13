@@ -7,10 +7,12 @@ class CartListSerializer(serializers.ModelSerializer):
         model = Cart
         fields = '__all__'
 
+
 class AdressesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Adresses
         fields = '__all__'
+
 
 class CheckoutListSerializer(serializers.ModelSerializer):
     class Meta:
