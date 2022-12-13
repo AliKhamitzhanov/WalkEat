@@ -16,6 +16,7 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+CART_SESSION_ID = 'cart'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -50,6 +51,8 @@ INSTALLED_APPS = [
     'card',
     "menu",
     'reg'
+    'cart',
+    'orders'
 ]
 
 MIDDLEWARE = [

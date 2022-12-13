@@ -23,7 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/", include("reg.urls")),
     path('api/v1/', include('card.urls')),
-    path('api/v1/', include('menu.urls'))
+    path('api/v1/menu/', include('menu.urls')),
+    path('api/v1/cart/', include('cart.urls')),
+    path('api/v1/orders/', include('orders.urls'))
 ]
 
 urlpatterns += swagger.urlpatterns
