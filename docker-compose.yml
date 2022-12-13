@@ -11,20 +11,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - #(Надо изменить)
-      - "5434:5432"
+      - "5435:5432"
 
   web:
     build: .
     restart: always
     command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic
-        --no-input && gunicorn -b 0.0.0.0:8005 Pianta.wsgi --reload"
+        --no-input && gunicorn -b 0.0.0.0:8004 master.wsgi --reload"
     volumes:
       - .:/app
       - ./static:/static
     ports:
-      - #(Надо изменить)
-      - "8005:8005"
+      - "8004:8004"
     depends_on:
       - postgres_db
 
@@ -37,9 +35,8 @@ services:
       - postgres_db
       - web
     ports:
-      - #(Надо изменить)
-      - "81:81"
-      - "442:442"
+      - "84:84"
+      - "444:444"
 
 volumes:
   postgres_data:
