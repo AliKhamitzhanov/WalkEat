@@ -16,14 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import swagger
+from django.conf.urls.static import static
+from master import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/menu/', include('menu.urls')),
     path('api/v1/cart/', include('cart.urls')),
     path('api/v1/orders/', include('orders.urls')),
-    path("api/v1/", include("reg.urls")),
-    path('api/v1/', include('card.urls')),
+    path("api/v1/reg/", include("reg.urls")),
+    path('api/v1/card/', include('card.urls')),
 ]
 
 urlpatterns += swagger.urlpatterns
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
