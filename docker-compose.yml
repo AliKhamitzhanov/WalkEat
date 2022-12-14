@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  postgres_db:
+  postgres_db_WalkEat:
     image: postgres:latest
     restart: always
     environment:
@@ -24,19 +24,7 @@ services:
     ports:
       - "8006:8006"
     depends_on:
-      - postgres_db
-
-  nginx:
-    image: nginx:latest
-    restart: always
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - postgres_db
-      - web
-    ports:
-      - "86:86"
-      - "446:446"
+      - postgres_db_WalkEat
 
 volumes:
   postgres_data:
