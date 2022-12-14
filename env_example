@@ -1,0 +1,9 @@
+SECRET_KEY=None
+DEBUG=on
+DB_NAME=walkeat_db
+DB_USER=walkeat_user
+DB_PASSWORD=1234
+DB_PORT=5432
+DB_HOST=postgres_db
+DOMAIN=example.com
+ADMIN_EMAIL=admin@example.com
