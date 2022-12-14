@@ -2,7 +2,9 @@ from decimal import Decimal
 from django.conf import settings
 from menu.models import Food
 
-class Cart(object):
+class Cart_pay(object):
+
+    objects = None
 
     def __init__(self, request):
         """
@@ -59,11 +61,11 @@ class Cart(object):
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
-    # def len(self):
-    #     """
-    #     Подсчет всех товаров в корзине.
-    #     """
-    #     return sum(item['quantity'] for item in self.cart.values())
+    def len(self):
+        """
+        Подсчет всех товаров в корзине.
+        """
+        return sum(item['quantity'] for item in self.cart.values())
 
     def get_total_price(self):
         """

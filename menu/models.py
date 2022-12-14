@@ -1,7 +1,7 @@
 from django.db import models
 
 WEEK_LIST = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-WEEK_CHOICES = ((day, day) for day in WEEK_LIST)
+WEEK_CHOICES = ((i, day) for i, day in enumerate(WEEK_LIST))
 CATEGORY_LIST = ["breakfast", "lunch", "snack", "dinner"]
 CATEGORY_CHOICES = ((category, category) for category in CATEGORY_LIST)
 
@@ -23,6 +23,7 @@ class Fit(models.Model):
         return self.title
 
 class Food(models.Model):
+    day = models.IntegerField(choices=WEEK_CHOICES, null=True)
     image = models.ImageField()
     title = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
@@ -31,17 +32,6 @@ class Food(models.Model):
     squirrels = models.FloatField()
     fats = models.FloatField()
     ingredients = models.TextField()
-    
+    fit = models.ForeignKey(Fit, on_delete=models.CASCADE, null=True)
     def __str__(self) -> str:
         return self.title
-
-foods_choice = [(food.id, food.title) for food in Food.objects.all()]
-
-class Set(models.Model):
-    day = models.CharField(max_length=255, choices=WEEK_CHOICES)
-    breakfast = models.IntegerField(choices=foods_choice, null=True)
-    lunch = models.IntegerField(choices=foods_choice, null=True)
-    snack = models.IntegerField(choices=foods_choice, null=True)
-    dinner = models.IntegerField(choices=foods_choice, null=True)
-    fit = models.ForeignKey(Fit, on_delete=models.PROTECT)
-

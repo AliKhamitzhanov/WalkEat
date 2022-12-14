@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import swagger
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/menu/', include('menu.urls')),
     path('api/v1/cart/', include('cart.urls')),
-    path('api/v1/orders/', include('orders.urls'))
+    path('api/v1/orders/', include('orders.urls')),
+    path("api/v1/", include("reg.urls")),
+    path('api/v1/', include('card.urls')),
 ]
+
+urlpatterns += swagger.urlpatterns
