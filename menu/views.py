@@ -1,21 +1,14 @@
-from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Fit, Food, Category
-from .serializers import CategorySerializer, FitListSerializer, FitDetailSerializer
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from .models import Fit
+from .serializers import FitListSerializer, FitDetailSerializer
 
 
-class CategoryFoodView(ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-
-class FitListView(ListCreateAPIView):
+class FitListView(ListAPIView):
     queryset = Fit.objects.all()
     serializer_class = FitListSerializer
 
 
-class FitDetailView(RetrieveUpdateDestroyAPIView):
+class FitDetailView(RetrieveAPIView):
     queryset = Fit.objects.all()
     serializer_class = FitDetailSerializer
     lookup_field = 'pk'
